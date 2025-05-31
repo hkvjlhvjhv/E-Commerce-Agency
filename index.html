@@ -417,6 +417,135 @@
             color: var(--text);
         }
         
+        /* Reviews Section */
+        .reviews-section {
+            background: white;
+            padding: 6rem 0;
+        }
+        
+        .trustpilot-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .trustpilot-rating .stars {
+            color: var(--success);
+            font-size: 1.8rem;
+            margin-right: 1rem;
+        }
+        
+        .trustpilot-rating .rating {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .trustpilot-rating .based-on {
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-card .stars {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card .content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: var(--text);
+        }
+        
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-card .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light);
+            margin-right: 1rem;
+            overflow: hidden;
+        }
+        
+        .testimonial-card .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            margin: 0.3rem 0 0;
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        
+        .expertise-highlights {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .expertise-highlights h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .expertise-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .expertise-item {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .expertise-item:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
         /* Services Section */
         .services {
             background-color: #f1f5f9;
@@ -713,7 +842,8 @@
                 font-size: 2rem;
             }
             
-            .results-grid {
+            .results-grid,
+            .testimonials {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -746,6 +876,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#results">Success Results</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -909,6 +1040,105 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="section reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Don't just take our word for it - hear from businesses that have transformed their online presence with our services</p>
+            </div>
+            
+            <div class="trustpilot-rating">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="rating">4.9</div>
+                <div class="based-on">Based on 127 reviews</div>
+            </div>
+            
+            <div class="testimonials">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="content">"The Shopify store they created for us is absolutely stunning and converts like crazy. Our sales increased by 220% in just two months after the redesign. Perfect for high-level ecommerce development!"</p>
+                    <div class="author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>CEO, Luxe Fashion Co.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="content">"Their Facebook ad strategy is next-level. We went from struggling to get leads to having our best month ever. Perfect for businesses looking to scale through paid social!"</p>
+                    <div class="author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Marketing Director, TechGadgets</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="content">"The PPC campaigns they set up for our Google Ads account have been phenomenal. Our ROI increased by 300% and we're getting higher quality leads than ever before. Perfect for Google Ads optimization!"</p>
+                    <div class="author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Founder, Organic Wellness</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="expertise-highlights">
+                <h3>Our Areas of Expertise</h3>
+                <div class="expertise-items">
+                    <div class="expertise-item">High-Level Shopify Stores</div>
+                    <div class="expertise-item">Facebook Ad Strategy</div>
+                    <div class="expertise-item">PPC Campaigns</div>
+                    <div class="expertise-item">Google Ads Optimization</div>
+                    <div class="expertise-item">Ecommerce Development</div>
+                    <div class="expertise-item">Lead Generation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="section services" id="services">
         <div class="container">
@@ -1050,7 +1280,7 @@
                     Nabeel<span>Ahmad</span>
                 </div>
                 <div class="social-links">
-                   <a href="https://www.facebook.com/share/16YBvHnYjp/?mibextid=qi2Omg"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/share/16YBvHnYjp/?mibextid=qi2Omg"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.linkedin.com/in/nabeel-ahmad-78b450355/"><i class="fab fa-linkedin-in"></i></a>
@@ -1113,7 +1343,7 @@
         
         // Animation on scroll
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.service-card, .about-img, .about-text, .contact-info, .contact-form, .result-card');
+            const elements = document.querySelectorAll('.service-card, .about-img, .about-text, .contact-info, .contact-form, .result-card, .testimonial-card');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
