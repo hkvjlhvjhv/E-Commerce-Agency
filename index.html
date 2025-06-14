@@ -1207,6 +1207,90 @@
     </section>
 
     <!-- Contact Section -->
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Basic CSS for layout and styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        .contact-details {
+            margin-top: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .contact-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #007bff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover:not(:disabled) {
+            background-color: #0056b3;
+        }
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #form-message {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
     <section class="section contact" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1219,7 +1303,7 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
+                                <i class="fas fa-phone" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h4>Phone</h4>
@@ -1228,7 +1312,7 @@
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h4>Email</h4>
@@ -1237,7 +1321,7 @@
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h4>Location</h4>
@@ -1248,29 +1332,113 @@
                 </div>
                 <div class="contact-form">
                     <h3>Send Me a Message</h3>
-                    <form id="form">
+                    <form id="contact-form" aria-label="Contact form">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required aria-required="true" placeholder="Enter your name">
                         </div>
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required aria-required="true" placeholder="Enter your email">
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject" required aria-required="true" placeholder="Enter subject">
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" name="message" required></textarea>
+                            <textarea id="message" name="message" required aria-required="true" placeholder="Enter your message"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
+                        <p id="form-message" style="display: none;"></p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Include EmailJS SDK v4.4.1 -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with Public Key
+        emailjs.init({
+            publicKey: "YOUR_PUBLIC_KEY", // Replace with your EmailJS Public Key
+        });
+
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form elements
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const submitBtn = document.getElementById('submit-btn');
+            const formMessage = document.getElementById('form-message');
+
+            // Client-side validation
+            if (!name || name.length < 2) {
+                showMessage('Please enter a valid name (at least 2 characters).', 'red');
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                showMessage('Please enter a valid email address.', 'red');
+                return;
+            }
+            if (!subject || subject.length < 3) {
+                showMessage('Please enter a subject (at least 3 characters).', 'red');
+                return;
+            }
+            if (!message || message.length < 10) {
+                showMessage('Please enter a message (at least 10 characters).', 'red');
+                return;
+            }
+
+            // Disable button to prevent multiple submissions
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Sanitize input
+            const formData = {
+                name: name.replace(/[<>]/g, ''),
+                email: email.replace(/[<>]/g, ''),
+                subject: subject.replace(/[<>]/g, ''),
+                message: message.replace(/[<>]/g, '')
+            };
+
+            // Send email using EmailJS
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData)
+                .then(function() {
+                    showMessage('Message sent successfully to pakriseinstitute@outlook.com!', 'green');
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    showMessage('Failed to send message. Please try again later.', 'red');
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                });
+        });
+
+        // Utility function to show messages
+        function showMessage(text, color) {
+            const formMessage = document.getElementById('form-message');
+            formMessage.style.display = 'block';
+            formMessage.style.color = color;
+            formMessage.textContent = text;
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+                formMessage.textContent = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
 
     <!-- Footer -->
     <footer>
@@ -1283,7 +1451,8 @@
                     <a href="https://www.facebook.com/share/16YBvHnYjp/?mibextid=qi2Omg"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/nabeel-ahmad-78b450355/"><i class="fab fa-linkedin-in"></i></a>
+                   <a href="https://www.upwork.com/freelancers/~0161de480e606f1805"><i class="fab fa-upwork"></i></a>
+                   <a href="https://www.linkedin.com/in/nabeel-ahmad-78b450355/"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <p class="copyright">© 2024 Nabeel Ahmad. All Rights Reserved.</p>
             </div>
