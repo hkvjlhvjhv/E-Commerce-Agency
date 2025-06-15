@@ -1207,162 +1207,602 @@
     </section>
 
     <!-- Contact Section -->
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
-    <!-- Include Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Pakris Institute - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* Basic CSS for layout and styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px 0;
+            border-bottom: 2px solid #eaeaea;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            position: relative;
         }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: #1a2a6c;
+            display: inline-block;
+            padding: 0 25px;
+            background: white;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #1a2a6c, transparent);
+            z-index: 1;
+        }
+        
         .contact-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 50px;
             justify-content: space-between;
         }
+        
         .contact-info, .contact-form {
             flex: 1;
             min-width: 300px;
+            padding: 35px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid #eaeaea;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .contact-info::before, .contact-form::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+        }
+        
+        .contact-info:hover, .contact-form:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-info h3, .contact-form h3 {
+            font-size: 2.2rem;
+            color: #b21f1f;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #eaeaea;
+            text-align: center;
+        }
+        
+        .contact-info p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            text-align: center;
+        }
+        
         .contact-details {
-            margin-top: 20px;
+            margin-top: 30px;
         }
+        
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+            border-left: 4px solid #1a2a6c;
         }
+        
+        .contact-item:hover {
+            background: #e3f2fd;
+            transform: translateX(10px);
+        }
+        
         .contact-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            color: #007bff;
+            font-size: 32px;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a2a6c;
+            border-radius: 50%;
+            margin-right: 25px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+        
+        .contact-item div h4 {
+            font-size: 1.4rem;
+            color: #1a2a6c;
+            margin-bottom: 8px;
+        }
+        
+        .contact-item div p {
+            font-size: 1.2rem;
+            color: #666;
+            margin: 0;
+            text-align: left;
+        }
+        
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
         }
+        
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #1a2a6c;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+        
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
+            padding: 18px 18px 18px 50px;
+            border: 2px solid #e1e5eb;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
+        
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50px;
+            font-size: 1.5rem;
+            color: #1a2a6c;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #1a2a6c;
+            box-shadow: 0 0 0 4px rgba(26, 42, 108, 0.15);
+            outline: none;
+        }
+        
         .form-group textarea {
-            min-height: 150px;
+            min-height: 200px;
             resize: vertical;
+            padding-left: 18px;
         }
+        
         .submit-btn {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
             color: white;
-            padding: 10px 20px;
+            padding: 18px 35px;
             border: none;
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
+        
         .submit-btn:hover:not(:disabled) {
-            background-color: #0056b3;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #23338d, #c92a2a);
         }
+        
         .submit-btn:disabled {
-            background-color: #ccc;
+            background: #aaaaaa;
             cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
+        
         #form-message {
-            margin-top: 10px;
-            font-size: 16px;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: none;
+            transition: all 0.4s ease;
+        }
+        
+        .credentials-info {
+            background: linear-gradient(to right, #e3f2fd, #f8f9fa);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 50px;
+            border-left: 5px solid #1a2a6c;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .credentials-info::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231a2a6c' fill-opacity='0.1' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E") no-repeat;
+            background-size: contain;
+            opacity: 0.3;
+            transform: translate(30%, -30%);
+        }
+        
+        .credentials-info h3 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .credentials-info p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #444;
+            text-align: center;
+        }
+        
+        .code-block {
+            background: #1a2a6c;
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            overflow-x: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .steps {
+            margin-top: 25px;
+            padding-left: 25px;
+        }
+        
+        .steps li {
+            margin-bottom: 18px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .steps li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #1a2a6c;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .status-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .status-indicator .icon {
+            font-size: 2rem;
+            color: #4caf50;
+        }
+        
+        .status-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: white;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+            color: #ffecb3;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #ffd700;
+            opacity: 0;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            header h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
-    <section class="section contact" id="contact">
-        <div class="container">
+    <div class="container">
+        <header>
+            <h1>Pakris Institute - Contact Us</h1>
+            <p>Reach out to us for inquiries, collaborations, or any questions you may have</p>
+        </header>
+        
+        <section class="section contact" id="contact">
             <div class="section-title">
                 <h2>Get In Touch</h2>
             </div>
+            
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Let's Work Together</h3>
-                    <p>I'm currently taking on new projects and would love to hear about yours. Please take a few minutes to tell me about it.</p>
+                    <p>We're currently taking on new projects and would love to hear about yours. Please take a few minutes to tell us about it.</p>
+                    
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-phone" aria-hidden="true"></i>
+                                <i class="fas fa-phone"></i>
                             </div>
                             <div>
                                 <h4>Phone</h4>
                                 <p>+92 3064619969</p>
                             </div>
                         </div>
+                        
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <i class="fas fa-envelope"></i>
                             </div>
                             <div>
                                 <h4>Email</h4>
                                 <p>pakriseinstitute@outlook.com</p>
                             </div>
                         </div>
+                        
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
                                 <h4>Location</h4>
                                 <p>Pakistan</p>
                             </div>
                         </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Working Hours</h4>
+                                <p>Monday-Friday: 9AM - 5PM</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
                 <div class="contact-form">
-                    <h3>Send Me a Message</h3>
+                    <h3>Send Us a Message</h3>
                     <form id="contact-form" aria-label="Contact form">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
+                            <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                            <i class="fas fa-user form-icon"></i>
                             <input type="text" id="name" name="name" required aria-required="true" placeholder="Enter your name">
                         </div>
+                        
                         <div class="form-group">
-                            <label for="email">Your Email</label>
+                            <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+                            <i class="fas fa-envelope form-icon"></i>
                             <input type="email" id="email" name="email" required aria-required="true" placeholder="Enter your email">
                         </div>
+                        
                         <div class="form-group">
-                            <label for="subject">Subject</label>
+                            <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                            <i class="fas fa-tag form-icon"></i>
                             <input type="text" id="subject" name="subject" required aria-required="true" placeholder="Enter subject">
                         </div>
+                        
                         <div class="form-group">
-                            <label for="message">Your Message</label>
+                            <label for="message"><i class="fas fa-comment"></i> Your Message</label>
                             <textarea id="message" name="message" required aria-required="true" placeholder="Enter your message"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
-                        <p id="form-message" style="display: none;"></p>
+                        
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        <p id="form-message"></p>
                     </form>
                 </div>
             </div>
+        </section>
+        
+        <div class="credentials-info">
+            <h3>EmailJS Configuration Status</h3>
+            
+            <div class="status-indicator">
+                <div class="icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="status-text">
+                    Service and Template IDs Successfully Integrated!
+                </div>
+            </div>
+            
+            <div class="code-block">
+                // EmailJS Initialization<br>
+                emailjs.init({<br>
+                &nbsp;&nbsp;publicKey: <span class="highlight">"hd6TEogF5ZcgXRZdD"</span><br>
+                });<br><br>
+                
+                // Email sending function<br>
+                emailjs.send(<br>
+                &nbsp;&nbsp;<span class="highlight">"service_mula3ag"</span>, // Service ID<br>
+                &nbsp;&nbsp;<span class="highlight">"template_lb2p0rn"</span>, // Template ID<br>
+                &nbsp;&nbsp;formData<br>
+                )
+            </div>
+            
+            <p>Your contact form is now fully configured and ready to send messages!</p>
+            
+            <div class="status-indicator" style="margin-top: 25px; background: #e3f2fd; border-left: 5px solid #1a2a6c;">
+                <div class="icon" style="color: #1a2a6c;">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="status-text" style="color: #1a2a6c;">
+                    Messages will be sent to: pakriseinstitute@outlook.com
+                </div>
+            </div>
         </div>
-    </section>
-
-    <!-- Include EmailJS SDK v4.4.1 -->
+    </div>
+    
+    <footer>
+        <p>Contact Form with EmailJS Integration | &copy; 2023 Pakris Institute | <a href="https://www.emailjs.com/" target="_blank">EmailJS Documentation</a></p>
+    </footer>
+    
+    <!-- Include EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS with Public Key
+        // Initialize EmailJS with the provided public key
         emailjs.init({
-            publicKey: "YOUR_PUBLIC_KEY", // Replace with your EmailJS Public Key
+            publicKey: "hd6TEogF5ZcgXRZdD"
         });
 
         // Email validation regex
@@ -1400,28 +1840,30 @@
 
             // Disable button to prevent multiple submissions
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
             // Sanitize input
             const formData = {
                 name: name.replace(/[<>]/g, ''),
                 email: email.replace(/[<>]/g, ''),
                 subject: subject.replace(/[<>]/g, ''),
-                message: message.replace(/[<>]/g, '')
+                message: message.replace(/[<>]/g, ''),
+                to_email: "pakriseinstitute@outlook.com"
             };
 
-            // Send email using EmailJS
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData)
+            // Send email using EmailJS with integrated service and template IDs
+            emailjs.send("service_mula3ag", "template_lb2p0rn", formData)
                 .then(function() {
                     showMessage('Message sent successfully to pakriseinstitute@outlook.com!', 'green');
                     document.getElementById('contact-form').reset();
+                    createConfetti();
                 }, function(error) {
                     showMessage('Failed to send message. Please try again later.', 'red');
                     console.error('EmailJS Error:', error);
                 })
                 .finally(function() {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
                 });
         });
 
@@ -1431,14 +1873,35 @@
             formMessage.style.display = 'block';
             formMessage.style.color = color;
             formMessage.textContent = text;
+            formMessage.style.backgroundColor = color === 'green' ? '#e6fffa' : '#fff5f5';
+            formMessage.style.border = color === 'green' ? '2px solid #c6f6d5' : '2px solid #fed7d7';
+            
             setTimeout(() => {
                 formMessage.style.display = 'none';
                 formMessage.textContent = '';
             }, 5000);
         }
+        
+        // Create confetti effect on success
+        function createConfetti() {
+            const colors = ['#ffd700', '#ff6b6b', '#48dbfb', '#1dd1a1', '#f368e0'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear forwards`;
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
     </script>
 </body>
-</html>
+</html>   
 
     <!-- Footer -->
     <footer>
