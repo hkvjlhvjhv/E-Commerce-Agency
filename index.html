@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nabeel Ahmad | Digital Services Expert</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init('hd6TEogF5ZcgXRZdD');
+        })();
+    </script>
     <style>
         :root {
             --primary: #2563eb;
@@ -117,6 +123,7 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: white;
         }
         
         /* Hero Section */
@@ -153,6 +160,13 @@
             font-weight: 600;
         }
         
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
         .btn {
             display: inline-block;
             background: var(--accent);
@@ -175,7 +189,7 @@
         .btn-outline {
             background: transparent;
             border: 2px solid white;
-            margin-left: 1rem;
+            color: white;
         }
         
         .btn-outline:hover {
@@ -584,6 +598,286 @@
             color: var(--dark);
         }
         
+        .service-card p {
+            color: var(--text);
+        }
+        
+        /* Professional Services Form Section */
+        .professional-services {
+            background: white;
+            padding: 6rem 0;
+        }
+        
+        .service-section {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tab i {
+            font-size: 1.2rem;
+        }
+        
+        .tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+        }
+        
+        .service-content {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .service-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .service-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .service-header h2 {
+            font-size: 2rem;
+            color: #1a2a6c;
+            margin-bottom: 10px;
+        }
+        
+        .service-header p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .option-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-color: #3498db;
+        }
+        
+        .option-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .option-card h3 i {
+            color: #e74c3c;
+        }
+        
+        .option-card ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .option-card li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .option-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .option-card li i {
+            color: #2ecc71;
+            margin-top: 5px;
+        }
+        
+        .pricing-section {
+            background: #f0f8ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid #cde6ff;
+        }
+        
+        .pricing-section h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a2a6c;
+            font-size: 1.4rem;
+        }
+        
+        .pricing-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            min-width: 220px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            border-color: #3498db;
+            transform: scale(1.03);
+        }
+        
+        .pricing-card h4 {
+            font-size: 1.3rem;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-card .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-card .delivery {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .service-form {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid #eee;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+        
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+        
+        .notification {
+            display: none;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
         /* Contact Section */
         .contact {
             background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.9)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
@@ -650,19 +944,19 @@
             text-align: center;
         }
         
-        .form-group {
+        .contact-form .form-group {
             margin-bottom: 1.5rem;
         }
         
-        .form-group label {
+        .contact-form .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--dark);
             font-weight: 500;
         }
         
-        .form-group input,
-        .form-group textarea {
+        .contact-form .form-group input,
+        .contact-form .form-group textarea {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid #ddd;
@@ -671,19 +965,19 @@
             transition: all 0.3s ease;
         }
         
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .contact-form .form-group input:focus,
+        .contact-form .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
         }
         
-        .form-group textarea {
+        .contact-form .form-group textarea {
             resize: vertical;
             min-height: 120px;
         }
         
-        .submit-btn {
+        .contact-form .submit-btn {
             background: var(--primary);
             color: white;
             border: none;
@@ -696,10 +990,26 @@
             width: 100%;
         }
         
-        .submit-btn:hover {
+        .contact-form .submit-btn:hover {
             background: var(--secondary);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .contact-form #contact-notification {
+            display: none;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
         }
         
         /* Footer */
@@ -798,6 +1108,21 @@
             .hero h1 {
                 font-size: 2.8rem;
             }
+            
+            .pricing-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                width: 100%;
+                justify-content: center;
+            }
         }
         
         @media (max-width: 768px) {
@@ -812,6 +1137,7 @@
                 align-items: center;
                 justify-content: center;
                 transition: all 0.5s ease;
+                z-index: 999;
             }
             
             nav ul.active {
@@ -824,6 +1150,7 @@
             
             .mobile-menu {
                 display: block;
+                z-index: 1001;
             }
             
             .hero h1 {
@@ -834,8 +1161,19 @@
                 font-size: 1rem;
             }
             
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
             .btn {
-                padding: 0.6rem 1.5rem;
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
             }
             
             .section-title h2 {
@@ -861,6 +1199,10 @@
             .stat-value {
                 font-size: 1.2rem;
             }
+            
+            .pricing-card {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
@@ -878,6 +1220,7 @@
                     <li><a href="#results">Success Results</a></li>
                     <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#professional-services">Get a Quote</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu" id="mobile-menu">
@@ -893,9 +1236,9 @@
             <div class="hero-content">
                 <h1>Nabeel Ahmad</h1>
                 <p>Digital Services Expert with <span class="highlight">5+ years</span> of experience helping businesses grow online through Shopify, Amazon, LLC formation, VoIP, and digital marketing solutions.</p>
-                <div>
+                <div class="hero-buttons">
                     <a href="#contact" class="btn">Get In Touch</a>
-                    <a href="#services" class="btn btn-outline">My Services</a>
+                    <a href="#professional-services" class="btn btn-outline">Get a Quote</a>
                 </div>
             </div>
         </div>
@@ -1206,94 +1549,287 @@
         </div>
     </section>
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
-    <!-- Include Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /* Basic CSS for layout and styling */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: space-between;
-        }
-        .contact-info, .contact-form {
-            flex: 1;
-            min-width: 300px;
-        }
-        .contact-details {
-            margin-top: 20px;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .contact-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            color: #007bff;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        .submit-btn {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .submit-btn:hover:not(:disabled) {
-            background-color: #0056b3;
-        }
-        .submit-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        #form-message {
-            margin-top: 10px;
-            font-size: 16px;
-        }
-    </style>
-</head>
-<body>
+    <!-- Professional Services Form Section -->
+    <section class="section professional-services" id="professional-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get a Custom Quote</h2>
+                <p>Select the services you need and we'll get back to you with a customized solution</p>
+            </div>
+            
+            <div class="service-section">
+                <div class="tabs">
+                    <button class="tab active" data-tab="shopify">
+                        <i class="fab fa-shopify"></i> Shopify Services
+                    </button>
+                    <button class="tab" data-tab="wordpress">
+                        <i class="fab fa-wordpress"></i> WordPress Services
+                    </button>
+                    <button class="tab" data-tab="social">
+                        <i class="fas fa-hashtag"></i> Social Media Marketing
+                    </button>
+                </div>
+                
+                <!-- Shopify Services -->
+                <div class="service-content active" id="shopify">
+                    <div class="service-header">
+                        <h2>Shopify Development Services</h2>
+                        <p>Professional Shopify solutions to enhance your e-commerce store and boost sales</p>
+                    </div>
+                    
+                    <div class="service-options">
+                        <div class="option-card">
+                            <h3><i class="fas fa-laptop-code"></i> Design & Development</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Design modifications</li>
+                                <li><i class="fas fa-check"></i> Custom coding via Liquid</li>
+                                <li><i class="fas fa-check"></i> Product/Collection page mods</li>
+                                <li><i class="fas fa-check"></i> Responsiveness fixes</li>
+                                <li><i class="fas fa-check"></i> Custom animations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="option-card">
+                            <h3><i class="fas fa-cogs"></i> Functionality & Optimization</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Shipping options setup</li>
+                                <li><i class="fas fa-check"></i> Search functionality mods</li>
+                                <li><i class="fas fa-check"></i> Custom filter options</li>
+                                <li><i class="fas fa-check"></i> Metafields integration</li>
+                                <li><i class="fas fa-check"></i> Payment options setup</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="option-card">
+                            <h3><i class="fas fa-tools"></i> Advanced Services</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Bug/error fixes</li>
+                                <li><i class="fas fa-check"></i> Comparison slider integration</li>
+                                <li><i class="fas fa-check"></i> Checkout customizations</li>
+                                <li><i class="fas fa-check"></i> Migration from other CMS</li>
+                                <li><i class="fas fa-check"></i> Plus much more...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <h3>Project Pricing & Delivery</h3>
+                        <div class="pricing-options">
+                            <div class="pricing-card">
+                                <h4>Basic Package</h4>
+                                <div class="price">$120</div>
+                                <div class="delivery">1 website</div>
+                                <div class="delivery">5 days delivery</div>
+                            </div>
+                            
+                            <div class="pricing-card">
+                                <h4>Standard Package</h4>
+                                <div class="price">$280</div>
+                                <div class="delivery">3 websites</div>
+                                <div class="delivery">10 days delivery</div>
+                            </div>
+                            
+                            <div class="pricing-card">
+                                <h4>Premium Package</h4>
+                                <div class="price">$800</div>
+                                <div class="delivery">5-10 websites</div>
+                                <div class="delivery">3 days/website</div>
+                                <div class="delivery">With animations</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- WordPress Services -->
+                <div class="service-content" id="wordpress">
+                    <div class="service-header">
+                        <h2>WordPress Development Services</h2>
+                        <p>Comprehensive WordPress solutions for all your website needs</p>
+                    </div>
+                    
+                    <div class="service-options">
+                        <div class="option-card">
+                            <h3><i class="fas fa-copy"></i> Design & Setup</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Duplicate/clone websites</li>
+                                <li><i class="fas fa-check"></i> Create personal/e-commerce sites</li>
+                                <li><i class="fas fa-check"></i> Convert from Figma/XD/PSD</li>
+                                <li><i class="fas fa-check"></i> Theme setup</li>
+                                <li><i class="fas fa-check"></i> Fully responsive design</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="option-card">
+                            <h3><i class="fas fa-sliders-h"></i> Customization</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Customize any site to your needs</li>
+                                <li><i class="fas fa-check"></i> Elementor customization</li>
+                                <li><i class="fas fa-check"></i> Add/remove features</li>
+                                <li><i class="fas fa-check"></i> Provide customization</li>
+                                <li><i class="fas fa-check"></i> Additional features</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="option-card">
+                            <h3><i class="fas fa-wrench"></i> Maintenance</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Fix any errors</li>
+                                <li><i class="fas fa-check"></i> Upload content</li>
+                                <li><i class="fas fa-check"></i> Ongoing support</li>
+                                <li><i class="fas fa-check"></i> Performance optimization</li>
+                                <li><i class="fas fa-check"></i> Security enhancements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <h3>Project Pricing</h3>
+                        <div class="pricing-options">
+                            <div class="pricing-card">
+                                <h4>Single Website</h4>
+                                <div class="price">$200</div>
+                                <div class="delivery">Standard delivery</div>
+                            </div>
+                            
+                            <div class="pricing-card">
+                                <h4>Three Websites</h4>
+                                <div class="price">$500</div>
+                                <div class="delivery">Bulk discount</div>
+                            </div>
+                            
+                            <div class="pricing-card">
+                                <h4>Enterprise</h4>
+                                <div class="price">$1500</div>
+                                <div class="delivery">5-10 websites</div>
+                                <div class="delivery">Priority support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Media Services -->
+                <div class="service-content" id="social">
+                    <div class="service-header">
+                        <h2>Social Media Marketing</h2>
+                        <p>Boost your online presence with our comprehensive social media strategies</p>
+                    </div>
+                    
+                    <div class="service-options">
+                        <div class="option-card">
+                            <h3><i class="fas fa-bullseye"></i> Strategy & Optimization</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Custom strategy tailored to goals</li>
+                                <li><i class="fas fa-check"></i> Full profile optimization</li>
+                                <li><i class="fas fa-check"></i> SEO keyword research</li>
+                                <li><i class="fas fa-check"></i> Targeted hashtag research</li>
+                                <li><i class="fas fa-check"></i> Competitive analysis</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="option-card">
+                            <h3><i class="fas fa-palette"></i> Content Creation</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Engaging content creation</li>
+                                <li><i class="fas fa-check"></i> Eye-catching posts & stories</li>
+                                <li><i class="fas fa-check"></i> Reels/TikToks production</li>
+                                <li><i class="fas fa-check"></i> Compelling copywriting</li>
+                                <li><i class="fas fa-check"></i> Brand identity development</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="option-card">
+                            <h3><i class="fas fa-chart-line"></i> Management & Ads</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Facebook ads management</li>
+                                <li><i class="fas fa-check"></i> Instagram ads campaigns</li>
+                                <li><i class="fas fa-check"></i> TikTok advertising</li>
+                                <li><i class="fas fa-check"></i> Google ads campaigns</li>
+                                <li><i class="fas fa-check"></i> Performance analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <h3>Pricing Structure</h3>
+                        <div class="pricing-options">
+                            <div class="pricing-card">
+                                <h4>Hourly Rate</h4>
+                                <div class="price">$30/hour</div>
+                                <div class="delivery">Flexible hours</div>
+                                <div class="delivery">Pay as you go</div>
+                            </div>
+                            
+                            <div class="pricing-card">
+                                <h4>Standard Package</h4>
+                                <div class="price">$500</div>
+                                <div class="delivery">20 hours/month</div>
+                                <div class="delivery">All platforms</div>
+                            </div>
+                            
+                            <div class="pricing-card">
+                                <h4>Premium Package</h4>
+                                <div class="price">$1200</div>
+                                <div class="delivery">50 hours/month</div>
+                                <div class="delivery">Full strategy & execution</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-form">
+                    <form id="service-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service-type">Service Type</label>
+                            <select id="service-type" name="service_type" required>
+                                <option value="">Select a service</option>
+                                <option value="shopify">Shopify Services</option>
+                                <option value="wordpress">WordPress Services</option>
+                                <option value="social">Social Media Marketing</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="package">Package Selection</label>
+                            <select id="package" name="package" required>
+                                <option value="">Select a package</option>
+                                <option value="basic">Basic Package</option>
+                                <option value="standard">Standard Package</option>
+                                <option value="premium">Premium Package</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Describe your project requirements..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Contact Now
+                        </button>
+                        
+                        <div id="notification" class="notification"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Get In Touch</h2>
+                <h2>Contact Me</h2>
+                <p>Have questions or ready to get started? Reach out to me directly</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -1302,7 +1838,7 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-phone" aria-hidden="true"></i>
+                                <i class="fas fa-phone"></i>
                             </div>
                             <div>
                                 <h4>Phone</h4>
@@ -1311,7 +1847,7 @@
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <i class="fas fa-envelope"></i>
                             </div>
                             <div>
                                 <h4>Email</h4>
@@ -1320,7 +1856,7 @@
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
                                 <h4>Location</h4>
@@ -1331,114 +1867,31 @@
                 </div>
                 <div class="contact-form">
                     <h3>Send Me a Message</h3>
-                    <form id="contact-form" aria-label="Contact form">
+                    <form id="contact-form">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required aria-required="true" placeholder="Enter your name">
+                            <label for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" name="contact-name" required placeholder="Enter your name">
                         </div>
                         <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required aria-required="true" placeholder="Enter your email">
+                            <label for="contact-email">Your Email</label>
+                            <input type="email" id="contact-email" name="contact-email" required placeholder="Enter your email">
                         </div>
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required aria-required="true" placeholder="Enter subject">
+                            <label for="contact-subject">Subject</label>
+                            <input type="text" id="contact-subject" name="contact-subject" required placeholder="Enter subject">
                         </div>
                         <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" required aria-required="true" placeholder="Enter your message"></textarea>
+                            <label for="contact-message">Your Message</label>
+                            <textarea id="contact-message" name="contact-message" rows="4" required placeholder="Enter your message"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
-                        <p id="form-message" style="display: none;"></p>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                        <div id="contact-notification" class="notification"></div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Include EmailJS SDK v4.4.1 -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
-    <script>
-        // Initialize EmailJS with Public Key
-        emailjs.init({
-            publicKey: "hd6TEogF5ZcgXRZdD",
-        });
-
-        // Email validation regex
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        // Handle form submission
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Get form elements
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
-            const submitBtn = document.getElementById('submit-btn');
-            const formMessage = document.getElementById('form-message');
-
-            // Client-side validation
-            if (!name || name.length < 2) {
-                showMessage('Please enter a valid name (at least 2 characters).', 'red');
-                return;
-            }
-            if (!emailRegex.test(email)) {
-                showMessage('Please enter a valid email address.', 'red');
-                return;
-            }
-            if (!subject || subject.length < 3) {
-                showMessage('Please enter a subject (at least 3 characters).', 'red');
-                return;
-            }
-            if (!message || message.length < 10) {
-                showMessage('Please enter a message (at least 10 characters).', 'red');
-                return;
-            }
-
-            // Disable button to prevent multiple submissions
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-
-            // Sanitize input
-            const formData = {
-                name: name.replace(/[<>]/g, ''),
-                email: email.replace(/[<>]/g, ''),
-                subject: subject.replace(/[<>]/g, ''),
-                message: message.replace(/[<>]/g, '')
-            };
-
-            // Send email using EmailJS
-            emailjs.send("service_mula3ag", "template_lb2p0rn", formData)
-                .then(function() {
-                    showMessage('Message sent successfully to pakriseinstitute@outlook.com!', 'green');
-                    document.getElementById('contact-form').reset();
-                }, function(error) {
-                    showMessage('Failed to send message. Please try again later.', 'red');
-                    console.error('EmailJS Error:', error);
-                })
-                .finally(function() {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
-                });
-        });
-
-        // Utility function to show messages
-        function showMessage(text, color) {
-            const formMessage = document.getElementById('form-message');
-            formMessage.style.display = 'block';
-            formMessage.style.color = color;
-            formMessage.textContent = text;
-            setTimeout(() => {
-                formMessage.style.display = 'none';
-                formMessage.textContent = '';
-            }, 5000);
-        }
-    </script>
-</body>
-</html>
-              
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1486,14 +1939,6 @@
             }
         });
         
-        // Form submission
-        const form = document.getElementById('form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            form.reset();
-        });
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1526,6 +1971,121 @@
         
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+        
+        // Professional Services Form Functionality
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.service-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Update the service type dropdown
+                document.getElementById('service-type').value = tabId;
+            });
+        });
+        
+        // Update package options based on service type
+        document.getElementById('service-type').addEventListener('change', function() {
+            const serviceType = this.value;
+            const packageSelect = document.getElementById('package');
+            
+            // Clear existing options
+            packageSelect.innerHTML = '<option value="">Select a package</option>';
+            
+            // Add options based on service type
+            if (serviceType === 'shopify') {
+                packageSelect.innerHTML += `
+                    <option value="basic">Basic Package ($120)</option>
+                    <option value="standard">Standard Package ($280)</option>
+                    <option value="premium">Premium Package ($800)</option>
+                `;
+            } else if (serviceType === 'wordpress') {
+                packageSelect.innerHTML += `
+                    <option value="basic">Basic Package ($200)</option>
+                    <option value="standard">Standard Package ($500)</option>
+                    <option value="premium">Premium Package ($1500)</option>
+                `;
+            } else if (serviceType === 'social') {
+                packageSelect.innerHTML += `
+                    <option value="basic">Hourly Rate ($30/hour)</option>
+                    <option value="standard">Standard Package ($500)</option>
+                    <option value="premium">Premium Package ($1200)</option>
+                `;
+            }
+        });
+        
+        // Form submission with EmailJS for service form
+        document.getElementById('service-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            emailjs.sendForm('service_mula3ag', 'template_lb2p0rn', this)
+                .then(() => {
+                    showNotification('Your request has been sent successfully! We will contact you soon.', 'success', 'notification');
+                    this.reset();
+                }, (error) => {
+                    showNotification('Failed to send your request. Please try again.', 'error', 'notification');
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+        });
+        
+        // Form submission with EmailJS for contact form
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            const formData = {
+                name: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                subject: document.getElementById('contact-subject').value,
+                message: document.getElementById('contact-message').value
+            };
+            
+            emailjs.send('service_mula3ag', 'template_lb2p0rn', formData)
+                .then(() => {
+                    showNotification('Your message has been sent successfully! We will contact you soon.', 'success', 'contact-notification');
+                    this.reset();
+                }, (error) => {
+                    showNotification('Failed to send your message. Please try again.', 'error', 'contact-notification');
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+        });
+        
+        function showNotification(message, type, elementId) {
+            const notification = document.getElementById(elementId);
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.style.display = 'block';
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
     </script>
 </body>
 </html>
