@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <meta name="google-site-verification" content="CgCcL8kIhqm2MrERI8IWAQBxhtSiBL9qdTF9Oq7XcFE" />
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nabeel Ahmad | Digital Services Expert</title>
+    <link rel="icon" href="data:image/x-icon;base64,/* Base64 encoded favicon from the provided image */" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init('hd6TEogF5ZcgXRZdD');
-        })();
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/examples/js/controls/OrbitControls.js"></script>
     <style>
+        /* Your CSS remains unchanged */
         :root {
             --primary: #2563eb;
             --secondary: #1e40af;
@@ -129,11 +124,11 @@
             color: white;
         }
         
-        /* Hero Section */
+        /* Hero Section with 3D Animation */
         .hero {
             height: 100vh;
-            display: flex;
-            align-items: center;
+            position: relative;
+            overflow: hidden;
             background: linear-gradient(rgba(30, 64, 175, 0.8), rgba(37, 99, 235, 0.8)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
             color: white;
             text-align: center;
@@ -143,6 +138,8 @@
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
             animation: fadeInUp 1s ease;
         }
         
@@ -267,6 +264,7 @@
         
         .about-text p {
             margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
         
         .experience {
@@ -445,10 +443,13 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
         
         .trustpilot-rating .stars {
             color: var(--success);
+            font-size: 1.8rem;
+            margin-right: 1rem;
             font-size: 1.8rem;
             margin-right: 1rem;
         }
@@ -603,6 +604,7 @@
         
         .service-card p {
             color: var(--text);
+            line-height: 1.6;
         }
         
         /* Professional Services Form Section */
@@ -645,11 +647,16 @@
         
         .tab i {
             font-size: 1.2rem;
+            transition: transform 0.3s ease;
         }
         
         .tab:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tab:hover i {
+            transform: scale(1.1);
         }
         
         .tab.active {
@@ -674,11 +681,14 @@
         .service-header {
             text-align: center;
             margin-bottom: 25px;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .service-header h2 {
             font-size: 2rem;
-            color: #1a2a6c;
             margin-bottom: 10px;
         }
         
@@ -686,6 +696,7 @@
             color: #666;
             max-width: 700px;
             margin: 0 auto;
+            line-height: 1.6;
         }
         
         .service-options {
@@ -701,6 +712,23 @@
             padding: 20px;
             border: 1px solid #eee;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3498db, #2c3e50);
+            transition: width 0.3s ease;
+        }
+        
+        .option-card:hover::before {
+            width: 8px;
         }
         
         .option-card:hover {
@@ -720,11 +748,13 @@
         
         .option-card h3 i {
             color: #e74c3c;
+            font-size: 1.4rem;
         }
         
         .option-card ul {
             list-style-type: none;
             padding-left: 10px;
+            margin: 0;
         }
         
         .option-card li {
@@ -733,6 +763,11 @@
             align-items: flex-start;
             gap: 10px;
             border-bottom: 1px dashed #eee;
+            transition: padding-left 0.3s ease;
+        }
+        
+        .option-card li:hover {
+            padding-left: 5px;
         }
         
         .option-card li:last-child {
@@ -742,6 +777,7 @@
         .option-card li i {
             color: #2ecc71;
             margin-top: 5px;
+            flex-shrink: 0;
         }
         
         .pricing-section {
@@ -750,6 +786,19 @@
             padding: 20px;
             margin-bottom: 25px;
             border: 1px solid #cde6ff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), transparent);
+            border-radius: 0 0 0 100px;
         }
         
         .pricing-section h3 {
@@ -757,6 +806,7 @@
             margin-bottom: 20px;
             color: #1a2a6c;
             font-size: 1.4rem;
+            position: relative;
         }
         
         .pricing-options {
@@ -775,6 +825,23 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border: 2px solid #e0e0e0;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            transition: height 0.3s ease;
+        }
+        
+        .pricing-card:hover::after {
+            height: 8px;
         }
         
         .pricing-card:hover {
@@ -798,6 +865,7 @@
         .pricing-card .delivery {
             color: #666;
             font-size: 0.95rem;
+            margin-bottom: 5px;
         }
         
         .service-form {
@@ -805,10 +873,28 @@
             border-radius: 10px;
             padding: 25px;
             border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-form::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            transition: height 0.3s ease;
+        }
+        
+        .service-form:hover::before {
+            height: 8px;
         }
         
         .form-group {
             margin-bottom: 20px;
+            position: relative;
         }
         
         .form-group label {
@@ -826,7 +912,7 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1rem;
-            transition: border 0.3s ease;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
         }
         
         .form-group input:focus,
@@ -849,6 +935,23 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-submit:hover::before {
+            left: 100%;
         }
         
         .btn-submit:hover {
@@ -867,6 +970,7 @@
             border-radius: 8px;
             text-align: center;
             font-weight: 500;
+            animation: fadeIn 0.5s ease;
         }
         
         .success {
@@ -913,6 +1017,7 @@
         .contact-info p {
             margin-bottom: 2rem;
             opacity: 0.9;
+            line-height: 1.6;
         }
         
         .contact-details {
@@ -929,6 +1034,8 @@
             font-size: 1.5rem;
             margin-right: 1rem;
             color: var(--accent);
+            width: 30px;
+            text-align: center;
         }
         
         .contact-form {
@@ -1027,11 +1134,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 1.5rem;
         }
         
         .social-links {
             display: flex;
-            margin-bottom: 2rem;
+            gap: 1rem;
+            justify-content: center;
         }
         
         .social-links a {
@@ -1042,7 +1151,6 @@
             height: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            margin: 0 0.5rem;
             color: white;
             font-size: 1.2rem;
             transition: all 0.3s ease;
@@ -1233,18 +1341,17 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with 3D Animation -->
     <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Nabeel Ahmad</h1>
-                <p>Digital Services Expert with <span class="highlight">5+ years</span> of experience helping businesses grow online through Shopify, Amazon, LLC formation, VoIP, and digital marketing solutions.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn">Get In Touch</a>
-                    <a href="#professional-services" class="btn btn-outline">Get a Quote</a>
-                </div>
+        <div class="hero-content">
+            <h1>Nabeel Ahmad</h1>
+            <p>Digital Services Expert with <span class="highlight">5+ years</span> of experience helping businesses grow online through Shopify, Amazon, LLC formation, VoIP, and digital marketing solutions.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">Get In Touch</a>
+                <a href="#professional-services" class="btn btn-outline">Get a Quote</a>
             </div>
         </div>
+        <div id="threejs-container"></div>
     </section>
 
     <!-- About Section -->
@@ -1280,7 +1387,7 @@
             <div class="results-grid">
                 <div class="result-card amazon">
                     <div class="result-img">
-                        <img src="Amazon Sale Pic.png" alt="Amazon Sales Results">
+                        <img src="Amazon Sale Pic.png">
                         <div class="result-badge">Amazon</div>
                     </div>
                     <div class="result-content">
@@ -1301,7 +1408,7 @@
                 
                 <div class="result-card shopify">
                     <div class="result-img">
-                        <img src="Shopify Sale Pic 2.png" alt="Shopify Sales Results">
+                        <img src="Shopify Sale Pic.png">
                         <div class="result-badge">Shopify</div>
                     </div>
                     <div class="result-content">
@@ -1780,7 +1887,8 @@
                 </div>
                 
                 <div class="service-form">
-                    <form id="service-form">
+                    <!-- Service form -->
+                    <form id="service-form" action="https://formspree.io/f/xzzanwjy" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required placeholder="Enter your name">
@@ -1870,22 +1978,23 @@
                 </div>
                 <div class="contact-form">
                     <h3>Send Me a Message</h3>
-                    <form id="contact-form">
+                    <!-- Contact form -->
+                    <form id="contact-form" action="https://formspree.io/f/xzzanwjy" method="POST">
                         <div class="form-group">
                             <label for="contact-name">Your Name</label>
-                            <input type="text" id="contact-name" name="contact-name" required placeholder="Enter your name">
+                            <input type="text" id="contact-name" name="name" required placeholder="Enter your name">
                         </div>
                         <div class="form-group">
                             <label for="contact-email">Your Email</label>
-                            <input type="email" id="contact-email" name="contact-email" required placeholder="Enter your email">
+                            <input type="email" id="contact-email" name="email" required placeholder="Enter your email">
                         </div>
                         <div class="form-group">
                             <label for="contact-subject">Subject</label>
-                            <input type="text" id="contact-subject" name="contact-subject" required placeholder="Enter subject">
+                            <input type="text" id="contact-subject" name="subject" required placeholder="Enter subject">
                         </div>
                         <div class="form-group">
                             <label for="contact-message">Your Message</label>
-                            <textarea id="contact-message" name="contact-message" rows="4" required placeholder="Enter your message"></textarea>
+                            <textarea id="contact-message" name="message" rows="4" required placeholder="Enter your message"></textarea>
                         </div>
                         <button type="submit" class="submit-btn">Send Message</button>
                         <div id="contact-notification" class="notification"></div>
@@ -1906,8 +2015,8 @@
                     <a href="https://www.facebook.com/share/16YBvHnYjp/?mibextid=qi2Omg"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                   <a href="https://www.upwork.com/freelancers/~0161de480e606f1805"><i class="fab fa-upwork"></i></a>
-                   <a href="https://www.linkedin.com/in/nabeel-ahmad-78b450355/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.upwork.com/freelancers/~0161de480e606f1805"><i class="fab fa-upwork"></i></a>
+                    <a href="https://www.linkedin.com/in/nabeel-ahmad-78b450355/"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <p class="copyright">© 2024 Nabeel Ahmad. All Rights Reserved.</p>
             </div>
@@ -1979,18 +2088,14 @@
         // Tab switching functionality
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
-                // Remove active class from all tabs and content
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 document.querySelectorAll('.service-content').forEach(c => c.classList.remove('active'));
                 
-                // Add active class to clicked tab
                 tab.classList.add('active');
                 
-                // Show corresponding content
                 const tabId = tab.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
                 
-                // Update the service type dropdown
                 document.getElementById('service-type').value = tabId;
             });
         });
@@ -2000,10 +2105,8 @@
             const serviceType = this.value;
             const packageSelect = document.getElementById('package');
             
-            // Clear existing options
             packageSelect.innerHTML = '<option value="">Select a package</option>';
             
-            // Add options based on service type
             if (serviceType === 'shopify') {
                 packageSelect.innerHTML += `
                     <option value="basic">Basic Package ($120)</option>
@@ -2024,8 +2127,69 @@
                 `;
             }
         });
+
+        // 3D Animation Setup - Fixed version
+        let scene, camera, renderer, geometry, material, mesh;
         
-        // Form submission with EmailJS for service form
+        function initThreeJS() {
+            const container = document.getElementById('threejs-container');
+            if (!container) return;
+            
+            container.style.position = 'absolute';
+            container.style.top = '0';
+            container.style.left = '0';
+            container.style.width = '100%';
+            container.style.height = '100%';
+            container.style.zIndex = '1';
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            // Create a simple geometry instead of the incomplete one
+            geometry = new THREE.IcosahedronGeometry(1, 0);
+            material = new THREE.MeshPhongMaterial({ 
+                color: 0x3b82f6, 
+                specular: 0x555555, 
+                shininess: 30,
+                wireframe: true
+            });
+            mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+
+            const light = new THREE.PointLight(0xffffff, 1, 100);
+            light.position.set(10, 10, 10);
+            scene.add(light);
+
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+
+            camera.position.z = 5;
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                mesh.rotation.x += 0.01;
+                mesh.rotation.y += 0.02;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // Call this function when the page loads
+        window.addEventListener('load', initThreeJS);
+
+        // Form submission handling for Formspree
+        // Service Form Submission
         document.getElementById('service-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2034,21 +2198,36 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            emailjs.sendForm('service_mula3ag', 'template_lb2p0rn', this)
-                .then(() => {
+            // Create form data
+            const formData = new FormData(this);
+            
+            // Submit to Formspree
+            fetch(this.action, {
+                method: this.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
                     showNotification('Your request has been sent successfully! We will contact you soon.', 'success', 'notification');
                     this.reset();
-                }, (error) => {
-                    showNotification('Failed to send your request. Please try again.', 'error', 'notification');
-                    console.error('EmailJS Error:', error);
-                })
-                .finally(() => {
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-                });
+                } else {
+                    throw new Error('Failed to send your request');
+                }
+            })
+            .catch(error => {
+                showNotification('Failed to send your request. Please try again.', 'error', 'notification');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
-        
-        // Form submission with EmailJS for contact form
+
+        // Contact Form Submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2057,34 +2236,41 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            const formData = {
-                name: document.getElementById('contact-name').value,
-                email: document.getElementById('contact-email').value,
-                subject: document.getElementById('contact-subject').value,
-                message: document.getElementById('contact-message').value
-            };
+            // Create form data
+            const formData = new FormData(this);
             
-            emailjs.send('service_mula3ag', 'template_lb2p0rn', formData)
-                .then(() => {
+            // Submit to Formspree
+            fetch(this.action, {
+                method: this.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
                     showNotification('Your message has been sent successfully! We will contact you soon.', 'success', 'contact-notification');
                     this.reset();
-                }, (error) => {
-                    showNotification('Failed to send your message. Please try again.', 'error', 'contact-notification');
-                    console.error('EmailJS Error:', error);
-                })
-                .finally(() => {
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-                });
+                } else {
+                    throw new Error('Failed to send your message');
+                }
+            })
+            .catch(error => {
+                showNotification('Failed to send your message. Please try again.', 'error', 'contact-notification');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
-        
+
         function showNotification(message, type, elementId) {
             const notification = document.getElementById(elementId);
             notification.textContent = message;
             notification.className = `notification ${type}`;
             notification.style.display = 'block';
             
-            // Hide notification after 5 seconds
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 5000);
